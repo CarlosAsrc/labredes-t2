@@ -2,7 +2,8 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+import conexao.Entrada;
+import conexao.Saida;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
