@@ -47,6 +47,7 @@ public class Saida {
 			DatagramPacket receivePacket = new DatagramPacket(receivebuffer, receivebuffer.length);
 			clientSocket.receive(receivePacket);
 			String serverData = new String(receivePacket.getData());
+			serverData.trim();
 			System.out.print("\nServer: " + serverData);
 
 		
