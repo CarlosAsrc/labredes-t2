@@ -57,7 +57,7 @@ public class Entrada {
 				break;
 			}
 		}
-		serverSocket.close();
+		serverSocket.disconnect();;
 		escutar();
 	}
 
