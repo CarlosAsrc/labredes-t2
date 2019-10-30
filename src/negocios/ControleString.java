@@ -2,11 +2,10 @@ package negocios;
 
 public class ControleString {
 	public static String arrumaString(String a) {
-		int cont =a.length();
+		
 		int ultimo =0;
 		for (int i=a.length();i>0;i--) {
-			System.out.println(cont);
-			cont=cont-1;
+			
 			if(i<a.length()) {
 			
 			

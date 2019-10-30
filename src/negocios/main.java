@@ -9,9 +9,19 @@ import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
 public class main {
-
+	public static Configuracao configuracao =Testes.indentificacao("PC1");
 	public static void main(String[] args) {
+		/*
+		String ipDestino="";
+		int porta=0;
+		String apelido="";
+		int tempoToken=0;
+		boolean token=true;
 
+		configuracao = new Configuracao(ipDestino, porta, apelido, tempoToken, token);
+		*/
+		
+		
 System.out.println("comecou");
 
 thread1();
