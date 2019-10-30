@@ -11,6 +11,8 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.concurrent.TimeUnit;
 
+import negocios.ControleString;
+
 
 
 public class Entrada {
@@ -34,8 +36,9 @@ public class Entrada {
 		
 			int portno = recvdpkt.getPort();
 			String clientdata = new String(recvdpkt.getData());
+			clientdata=ControleString.arrumaString(clientdata);
 			System.out.println("\nClient : " + clientdata);
-		//	analisemc(clientdata);
+	
 
 			
 

@@ -11,6 +11,8 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.concurrent.TimeUnit;
 
+import negocios.ControleString;
+
 
 public class Saida {
 
@@ -47,7 +49,8 @@ public class Saida {
 			DatagramPacket receivePacket = new DatagramPacket(receivebuffer, receivebuffer.length);
 			clientSocket.receive(receivePacket);
 			String serverData = new String(receivePacket.getData());
-			serverData.trim();
+			
+			serverData=ControleString.arrumaString(serverData);
 			System.out.print("\nServer: " + serverData);
 
 		

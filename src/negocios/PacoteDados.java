@@ -1,3 +1,4 @@
+package negocios;
 public class PacoteDados {
     private ControleErro controleErro;
     private String apelidoOrigem;

@@ -1,3 +1,4 @@
+package negocios;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,7 +11,7 @@ import javafx.scene.paint.Color;
 public class main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 System.out.println("comecou");
 
 thread1();
@@ -59,5 +60,4 @@ public static void thread2() {
     long period = 1000;
     timer.schedule(task, delay, period);
 	}
-
 }

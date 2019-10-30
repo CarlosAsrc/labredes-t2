@@ -1,3 +1,4 @@
+package negocios;
 public class Configuracao {
 
     private String ipDestino;

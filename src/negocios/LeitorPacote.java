@@ -1,3 +1,4 @@
+package negocios;
 import java.util.Scanner;
 
 public class LeitorPacote {
