@@ -11,6 +11,7 @@ import java.net.SocketException;
 import java.util.concurrent.TimeUnit;
 
 import negocios.ControleString;
+import negocios.Estados;
 import negocios.main;
 
 public class Saida {
@@ -32,6 +33,7 @@ public class Saida {
 		while (true) {
 			tempo = tempo + 1;
 			System.out.println("\nTempo: " + tempo);
+			Estados.tempoA=tempo;
 			byte[] sendbuffer = new byte[1024];
 			byte[] receivebuffer = new byte[1024];
 
@@ -48,7 +50,7 @@ public class Saida {
 			serverData = ControleString.arrumaString(serverData);
 			System.out.print("\nServer: " + serverData);
 
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 			
 		}
 		

@@ -12,6 +12,7 @@ import java.net.SocketException;
 import java.util.concurrent.TimeUnit;
 
 import negocios.ControleString;
+import negocios.Estados;
 import negocios.main;
 
 
@@ -30,6 +31,7 @@ public class Entrada {
 		while (true) {
 			tempo = tempo + 1;
 			System.out.println("Tempo: " + tempo);
+			Estados.tempoA=tempo;
 			byte[] receivebuffer = new byte[1024];
 			byte[] sendbuffer = new byte[1024];
 			DatagramPacket recvdpkt = new DatagramPacket(receivebuffer, receivebuffer.length);
@@ -52,7 +54,7 @@ public class Entrada {
 
 			serverSocket.send(sendPacket);
 
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 			
 		}
 		

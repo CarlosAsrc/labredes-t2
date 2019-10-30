@@ -30,6 +30,8 @@ thread1();
 
 thread2();
 
+thread3();
+
 TimeUnit.SECONDS.sleep(1);
 while (true) {
 	Mensagens.criaNovaMensagem();
@@ -67,6 +69,26 @@ public static void thread2() {
      		try {
 				Saida.enviar();
 			} catch (IOException | InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}    	
+	
+        }
+    };
+    long delay = 0; //
+    long period = 1000;
+    timer.schedule(task, delay, period);
+	}
+public static void thread3() {
+	Timer timer = new Timer();
+    TimerTask task = new TimerTask() {
+        
+        @Override
+        public void run() {
+        	
+     		try {
+				Estados.atualizacao();
+			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}    	
