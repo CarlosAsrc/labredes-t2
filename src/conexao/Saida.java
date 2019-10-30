@@ -1,6 +1,5 @@
 package conexao;
 
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,24 +11,21 @@ import java.net.SocketException;
 import java.util.concurrent.TimeUnit;
 
 import negocios.ControleString;
-
+import negocios.main;
 
 public class Saida {
 
 	public static void enviar() throws SocketException, IOException, InterruptedException {
 
-		
 		String mensagem = "pc2";
-	
+
 		System.out.println("Procurando proximo....");
 
 		BufferedReader clientRead = new BufferedReader(new InputStreamReader(System.in));
-//Note novo usar:
-	InetAddress IP = InetAddress.getByName("192.168.0.18");
-//Note velho usar:
-//	InetAddress IP = InetAddress.getByName("192.168.0.15");
-	
-	int porta = 9876;
+
+		InetAddress IP = InetAddress.getByName(main.configuracao.getIpDestino());
+
+		int porta = main.configuracao.getPorta();
 		DatagramSocket clientSocket = new DatagramSocket();
 		int contlinha = 0;
 		int tempo = 0;
@@ -39,7 +35,6 @@ public class Saida {
 			byte[] sendbuffer = new byte[1024];
 			byte[] receivebuffer = new byte[1024];
 
-		
 			String clientData = mensagem;
 
 			sendbuffer = clientData.getBytes();
@@ -49,16 +44,14 @@ public class Saida {
 			DatagramPacket receivePacket = new DatagramPacket(receivebuffer, receivebuffer.length);
 			clientSocket.receive(receivePacket);
 			String serverData = new String(receivePacket.getData());
-			
-			serverData=ControleString.arrumaString(serverData);
+
+			serverData = ControleString.arrumaString(serverData);
 			System.out.print("\nServer: " + serverData);
 
-		
 			TimeUnit.SECONDS.sleep(1);
 
 		}
 
 	}
-
 
 }
