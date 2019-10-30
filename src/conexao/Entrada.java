@@ -26,7 +26,7 @@ public class Entrada {
 		}
 		DatagramSocket serverSocket = new DatagramSocket(main.configuracao.getPorta());
 		
-		int tempo = 0;
+		
 		while (true) {
 			tempo = tempo + 1;
 			System.out.println("Tempo: " + tempo);
