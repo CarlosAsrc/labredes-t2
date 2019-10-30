@@ -14,14 +14,14 @@ import negocios.ControleString;
 import negocios.main;
 
 public class Saida {
-	public static double tempo = 0;
+	public static int tempo = 0;
 
 	public static void enviar() throws SocketException, IOException, InterruptedException {
 
 		String mensagem = "PC2...";
-		if (tempo == 0) {
+		
 			System.out.println("Procurando proximo....");
-		}
+		
 		BufferedReader clientRead = new BufferedReader(new InputStreamReader(System.in));
 
 		InetAddress IP = InetAddress.getByName(main.configuracao.getIpDestino());
@@ -49,12 +49,8 @@ public class Saida {
 			System.out.print("\nServer: " + serverData);
 
 			TimeUnit.SECONDS.sleep(1);
-			if (tempo % 10 == 0) {
-				break;
-			}
+			
 		}
-		clientRead.close();
-		clientSocket.disconnect();;
-		enviar();
+		
 	}
 }

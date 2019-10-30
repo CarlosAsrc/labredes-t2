@@ -17,13 +17,13 @@ import negocios.main;
 
 
 public class Entrada {
-	public static double tempo = 0;
+	public static int tempo = 0;
 	public static void escutar() throws InterruptedException, IOException {
 		
 		String mensagem = "PC1...";
-		if (tempo == 0) {
+	
 		System.out.println("Escutando....");
-		}
+		
 		DatagramSocket serverSocket = new DatagramSocket(main.configuracao.getPorta());
 		
 		
@@ -53,12 +53,9 @@ public class Entrada {
 			serverSocket.send(sendPacket);
 
 			TimeUnit.SECONDS.sleep(1);
-			if (tempo % 10 == 0) {
-				break;
-			}
+			
 		}
-		serverSocket.close();;
-		escutar();
+		
 	}
 
 
