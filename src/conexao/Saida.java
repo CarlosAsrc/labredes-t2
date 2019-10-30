@@ -54,6 +54,7 @@ public class Saida {
 			}
 		}
 		clientRead.close();
+		clientSocket.close();
 		enviar();
 	}
 }
