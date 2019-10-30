@@ -53,6 +53,7 @@ public class Saida {
 				break;
 			}
 		}
-enviar();
+		clientRead.close();
+		enviar();
 	}
 }

@@ -12,18 +12,20 @@ import java.net.SocketException;
 import java.util.concurrent.TimeUnit;
 
 import negocios.ControleString;
+import negocios.main;
 
 
 
 public class Entrada {
-
+	public static int tempo = 0;
 	public static void escutar() throws InterruptedException, IOException {
 		
 		String mensagem = "PC1...";
-
+		if (tempo == 0) {
 		System.out.println("Escutando....");
-		DatagramSocket serverSocket = new DatagramSocket(9876);
-		boolean bye = false;
+		}
+		DatagramSocket serverSocket = new DatagramSocket(main.configuracao.getPorta());
+		
 		int tempo = 0;
 		while (true) {
 			tempo = tempo + 1;
@@ -51,7 +53,11 @@ public class Entrada {
 			serverSocket.send(sendPacket);
 
 			TimeUnit.SECONDS.sleep(1);
+			if (tempo % 10 == 0) {
+				break;
+			}
 		}
+		escutar();
 	}
 
 
