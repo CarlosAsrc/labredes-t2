@@ -22,12 +22,12 @@ public class Saida {
 		System.out.println("Procurando proximo....");
 
 		BufferedReader clientRead = new BufferedReader(new InputStreamReader(System.in));
-
-		//InetAddress IP = InetAddress.getByName("192.168.0.18");
-	//	InetAddress IP = InetAddress.getByName("10.32.163.3");
-	//	InetAddress IP = InetAddress.getByName("10.32.143.59");
-		InetAddress IP = InetAddress.getByName("10.32.143.66");
-int porta = 9876;
+//Note novo usar:
+	InetAddress IP = InetAddress.getByName("192.168.0.18");
+//Note velho usar:
+//	InetAddress IP = InetAddress.getByName("192.168.0.15");
+	
+	int porta = 9876;
 		DatagramSocket clientSocket = new DatagramSocket();
 		int contlinha = 0;
 		int tempo = 0;
