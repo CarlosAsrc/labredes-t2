@@ -14,21 +14,21 @@ import negocios.ControleString;
 import negocios.main;
 
 public class Saida {
+	public static double tempo = 0;
 
 	public static void enviar() throws SocketException, IOException, InterruptedException {
 
-		String mensagem = "pc2";
-
-		System.out.println("Procurando proximo....");
-
+		String mensagem = "PC2...";
+		if (tempo == 0) {
+			System.out.println("Procurando proximo....");
+		}
 		BufferedReader clientRead = new BufferedReader(new InputStreamReader(System.in));
 
 		InetAddress IP = InetAddress.getByName(main.configuracao.getIpDestino());
 
 		int porta = main.configuracao.getPorta();
 		DatagramSocket clientSocket = new DatagramSocket();
-		int contlinha = 0;
-		int tempo = 0;
+
 		while (true) {
 			tempo = tempo + 1;
 			System.out.println("\nTempo: " + tempo);
@@ -49,9 +49,10 @@ public class Saida {
 			System.out.print("\nServer: " + serverData);
 
 			TimeUnit.SECONDS.sleep(1);
-
+			if (tempo % 10 == 0) {
+				break;
+			}
 		}
-
+enviar();
 	}
-
 }

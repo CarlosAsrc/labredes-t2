@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class LeitorArquivo {
 
-    private String caminhoArquivos = "./arquivos/";
+    private static String caminhoArquivos = "./arquivos/";
 
     public LeitorArquivo() {
 
     }
 
-    public Configuracao ler(String nomeArquivo){
+    public static Configuracao ler(String nomeArquivo){
 
         try{
             Scanner scanner = new Scanner(new File(caminhoArquivos + nomeArquivo));

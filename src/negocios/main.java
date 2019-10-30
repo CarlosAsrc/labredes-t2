@@ -2,6 +2,7 @@ package negocios;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import conexao.Entrada;
 import conexao.Saida;
@@ -10,7 +11,7 @@ import javafx.scene.paint.Color;
 
 public class main {
 	public static Configuracao configuracao =Testes.indentificacao("PC1");
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		/*
 		String ipDestino="";
 		int porta=0;
@@ -21,13 +22,19 @@ public class main {
 		configuracao = new Configuracao(ipDestino, porta, apelido, tempoToken, token);
 		*/
 		
-		
+//	configuracao = LeitorArquivo.ler("teste.txt");
+	
 System.out.println("comecou");
 
 thread1();
-System.out.println("1");
+
 thread2();
-System.out.println("2");
+
+TimeUnit.SECONDS.sleep(1);
+while (true) {
+	Mensagens.criaNovaMensagem();
+	System.out.println(Mensagens.mensagens);
+}
 
 
 	}
@@ -70,4 +77,5 @@ public static void thread2() {
     long period = 1000;
     timer.schedule(task, delay, period);
 	}
+
 }
