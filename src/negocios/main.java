@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 public class main {
 
 	public static void main(String[] args) {
-		
+
 System.out.println("comecou");
 
 thread1();

@@ -37,7 +37,8 @@ public class Entrada {
 			int portno = recvdpkt.getPort();
 			String clientdata = new String(recvdpkt.getData());
 			clientdata=ControleString.arrumaString(clientdata);
-			System.out.println("\nClient : " + clientdata);
+		
+				System.out.println("\nClient : " + clientdata);
 	
 
 			
