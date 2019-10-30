@@ -17,7 +17,7 @@ import negocios.main;
 
 
 public class Entrada {
-	public static int tempo = 0;
+	public static double tempo = 0;
 	public static void escutar() throws InterruptedException, IOException {
 		
 		String mensagem = "PC1...";
@@ -57,7 +57,7 @@ public class Entrada {
 				break;
 			}
 		}
-		serverSocket.disconnect();;
+		serverSocket.close();;
 		escutar();
 	}
 
