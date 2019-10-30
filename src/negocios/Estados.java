@@ -11,12 +11,14 @@ public static int tempoB=-1;
 public static int tempoA=0;
 public static void atualizacao() throws InterruptedException {
 	while (true) {
-		System.out.println("SIM");
+		
 		if (tempoB==tempoA) {
 			System.out.println("CAIU");
 			System.exit(0);
 		}
+		if (tempoA>1) {
 		tempoB=tempoA;
+		}
 		
 	if (alteracao.equals("sim")) {
 		System.out.println();
