@@ -34,7 +34,7 @@ public class main {
 System.out.println("Comecou");
 
 //Mensagens da situacao atual
-if (principal=true) {
+if (principal==true) {
 System.out.println("Possui token: true ");
 }
 else {
@@ -43,7 +43,7 @@ else {
 System.out.println("Possui pacote: false ");
 
 //PC principal apenas:
-if (principal=true) {
+if (principal==true) {
 System.out.println("Tokens circulando na rede: 1 ");
 
 System.out.println("Houve retransmissao: false");
