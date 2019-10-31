@@ -8,9 +8,12 @@ import conexao.Entrada;
 import conexao.Saida;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import objetos.Configuracao;
+import objetos.ControleErro;
 
 public class main {
 	public static String nome = "PC1";
+	public static String apelidoMaquinaDestino="";
 	public static boolean principal =false;
 	public static Configuracao configuracao =Testes.indentificacao(nome);
 	public static void main(String[] args) throws InterruptedException {
@@ -25,6 +28,8 @@ public class main {
 		*/
 		
 //	configuracao = LeitorArquivo.ler("teste.txt");
+	
+		ControleErro[] controleErro = ControleErro.values();
 		
 		if (nome.equals("PC1")) {
 			principal=true;
@@ -36,6 +41,7 @@ System.out.println("Comecou");
 //Mensagens da situacao atual
 if (principal==true) {
 System.out.println("Possui token: true ");
+Estados.token=true;
 }
 else {
 	System.out.println("Possui token: false ");

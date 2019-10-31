@@ -1,8 +1,10 @@
-package negocios;
+package leitores;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+
+import objetos.Configuracao;
 
 public class LeitorArquivo {
 

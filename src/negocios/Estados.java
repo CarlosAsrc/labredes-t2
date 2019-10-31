@@ -22,11 +22,25 @@ public static void atualizacao() throws InterruptedException {
 		
 	//Atualizacoes	
 	if (alteracao.equals("sim")) {
-		System.out.println();
+		//Mensagens da situacao atual
+		System.out.println("Possui token: "+token);
+		System.out.println("Possui pacote: "+pacote);
+
+		//PC principal apenas:
+		if (main.principal==true) {
+		System.out.println("Tokens circulando na rede: "+numeroTokens);
+
+		System.out.println("Houve retransmissao: "+retransmissao);
+
+		}
 		
 		alteracao="nao";
 	}
 	TimeUnit.SECONDS.sleep(2);
 	}
 }
+public static boolean token = false;
+public static boolean pacote = false;
+public static int numeroTokens= 1;
+public static boolean retransmissao = false;
 }

@@ -1,5 +1,8 @@
-package negocios;
+package leitores;
 import java.util.Scanner;
+
+import objetos.ControleErro;
+import objetos.PacoteDados;
 
 public class LeitorPacote {
 
@@ -15,6 +18,6 @@ public class LeitorPacote {
         String mensagem = scanner.next();
 
         //FALTA ALTERAR controle de erro:
-        return new PacoteDados(ControleErro.NAO_COPIADO, apelidoOrigem, apelidoDestino, CRC, mensagem);
+        return new PacoteDados("2345",ControleErro.NAO_COPIADO, apelidoOrigem, apelidoDestino, CRC, mensagem);
     }
 }
