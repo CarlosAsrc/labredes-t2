@@ -29,8 +29,7 @@ public class main {
 		
 //	configuracao = LeitorArquivo.ler("teste.txt");
 	
-		ControleErro[] controleErro = ControleErro.values();
-		
+	
 		if (nome.equals("PC1")) {
 			principal=true;
 		}
