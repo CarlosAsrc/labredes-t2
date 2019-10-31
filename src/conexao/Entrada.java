@@ -23,14 +23,18 @@ public class Entrada {
 		
 		String mensagem = "PC1...";
 	
-		System.out.println("Escutando....");
+		System.out.println("Escutando...");
 		
 		DatagramSocket serverSocket = new DatagramSocket(main.configuracao.getPorta());
 		
 		
 		while (true) {
 			tempo = tempo + 1;
-			System.out.println("Tempo: " + tempo);
+			if (tempo==2) {
+				System.out.println("Transmitindo!");
+			}
+			
+		//	System.out.println("Tempo: " + tempo);
 			Estados.tempoA=tempo;
 			byte[] receivebuffer = new byte[1024];
 			byte[] sendbuffer = new byte[1024];
@@ -42,7 +46,7 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata=ControleString.arrumaString(clientdata);
 		
-				System.out.println("\nClient : " + clientdata);
+			//	System.out.println("\nClient : " + clientdata);
 	
 
 			

@@ -21,7 +21,7 @@ public class Saida {
 
 		String mensagem = "PC2...";
 		
-			System.out.println("Procurando proximo....");
+			System.out.println("Enviando...");
 		
 		BufferedReader clientRead = new BufferedReader(new InputStreamReader(System.in));
 
@@ -32,7 +32,10 @@ public class Saida {
 
 		while (true) {
 			tempo = tempo + 1;
-			System.out.println("\nTempo: " + tempo);
+			if (tempo==2) {
+				System.out.println("Transmitindo!");
+			}
+			//System.out.println("\nTempo: " + tempo);
 			Estados.tempoA=tempo;
 			byte[] sendbuffer = new byte[1024];
 			byte[] receivebuffer = new byte[1024];
@@ -48,7 +51,7 @@ public class Saida {
 			String serverData = new String(receivePacket.getData());
 
 			serverData = ControleString.arrumaString(serverData);
-			System.out.print("\nServer: " + serverData);
+		//	System.out.print("\nServer: " + serverData);
 
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 			

@@ -10,7 +10,9 @@ import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
 public class main {
-	public static Configuracao configuracao =Testes.indentificacao("PC1");
+	public static String nome = "PC1";
+	public static boolean principal =false;
+	public static Configuracao configuracao =Testes.indentificacao(nome);
 	public static void main(String[] args) throws InterruptedException {
 		/*
 		String ipDestino="";
@@ -23,19 +25,30 @@ public class main {
 		*/
 		
 //	configuracao = LeitorArquivo.ler("teste.txt");
+		
+		if (nome.equals("PC1")) {
+			principal=true;
+		}
+		
 	
-System.out.println("comecou");
+System.out.println("Comecou");
 
 //Mensagens da situacao atual
-System.out.println("Possui token: ");
-
-System.out.println("Possui pacote: ");
+if (principal=true) {
+System.out.println("Possui token: true ");
+}
+else {
+	System.out.println("Possui token: false ");
+}
+System.out.println("Possui pacote: false ");
 
 //PC principal apenas:
-System.out.println("Tokens circulando na rede: ");
+if (principal=true) {
+System.out.println("Tokens circulando na rede: 1 ");
 
-System.out.println("Ouve retransmissao");
+System.out.println("Houve retransmissao: false");
 
+}
 thread1();
 
 thread2();
@@ -50,6 +63,7 @@ while (true) {
 
 
 	}
+	//Responsavel pela Entrada
 public static void thread1() {
 	Timer timer = new Timer();
     TimerTask task = new TimerTask() {
@@ -69,6 +83,7 @@ public static void thread1() {
     long period = 1000;
     timer.schedule(task, delay, period);
 	}
+//Responsavel pela Saida
 public static void thread2() {
 	Timer timer = new Timer();
     TimerTask task = new TimerTask() {
@@ -89,6 +104,7 @@ public static void thread2() {
     long period = 1000;
     timer.schedule(task, delay, period);
 	}
+//Responsavel pela Situacao Atual
 public static void thread3() {
 	Timer timer = new Timer();
     TimerTask task = new TimerTask() {
