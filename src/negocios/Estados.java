@@ -11,7 +11,7 @@ public static int tempoB=-1;
 public static int tempoA=0;
 public static void atualizacao() throws InterruptedException {
 	while (true) {
-		
+		//Controle de conexao
 		if (tempoB==tempoA) {
 			System.out.println("CAIU");
 			System.exit(0);
@@ -20,6 +20,7 @@ public static void atualizacao() throws InterruptedException {
 		tempoB=tempoA;
 		}
 		
+	//Atualizacoes	
 	if (alteracao.equals("sim")) {
 		System.out.println();
 		

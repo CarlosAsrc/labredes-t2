@@ -26,6 +26,16 @@ public class main {
 	
 System.out.println("comecou");
 
+//Mensagens da situacao atual
+System.out.println("Possui token: ");
+
+System.out.println("Possui pacote: ");
+
+//PC principal apenas:
+System.out.println("Tokens circulando na rede: ");
+
+System.out.println("Ouve retransmissao");
+
 thread1();
 
 thread2();
