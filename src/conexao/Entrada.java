@@ -34,7 +34,7 @@ public class Entrada {
 				System.out.println("Transmitindo!");
 			}
 			
-		//	System.out.println("Tempo: " + tempo);
+			System.out.println("Tempo: " + tempo);
 			Estados.tempoA=tempo;
 			byte[] receivebuffer = new byte[1024];
 			byte[] sendbuffer = new byte[1024];
