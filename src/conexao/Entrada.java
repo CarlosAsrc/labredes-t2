@@ -21,7 +21,7 @@ public class Entrada {
 	public static int tempo = 0;
 	public static void escutar() throws InterruptedException, IOException {
 		
-		String mensagem = main.configuracao.getApelido();
+		String mensagem = "Recebendo";
 	
 		System.out.println("Escutando...");
 		
@@ -47,7 +47,11 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata=ControleString.arrumaString(clientdata);
 		
-				System.out.println("\nRecebi : " + clientdata);
+				if (!clientdata.equals("Transmitindo")) {
+					Estados.pacote=clientdata;
+					Estados.alteracao="sim";
+					Estados.saidaPacote=clientdata;
+				}
 	
 
 			
@@ -59,7 +63,7 @@ public class Entrada {
 
 			serverSocket.send(sendPacket);
 if (!(main.principal)&&tempo==1) {
-System.out.println("entrou");
+
 	main.thread2();	
 }
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());

@@ -7,6 +7,7 @@ import objetos.ControleErro;
 import objetos.PacoteDados;
 
 public class Mensagens {
+	public static ArrayList<String> mensagensrecebidas = new ArrayList<String>();
 	public static ArrayList<String> mensagens = new ArrayList<String>();
 
 	public static void criaNovaMensagem() {
@@ -31,5 +32,30 @@ public class Mensagens {
 				+ pad.getApelidoDestino() + ":" + pad.getCRC() + ":" + pad.getMensagem();
 
 		return mensagem;
+	}
+
+	public static PacoteDados converteString_PD(String mensagem) {
+		String[] a = mensagem.split(":");
+		String pd = a[0];
+		String[] b = a[1].split(";");
+		ControleErro[] controleErro = ControleErro.values();
+		int i = 0;
+		if (b[0].equals("ACK")) {
+			i = 0;
+		}
+		if (b[0].equals("ERRO")) {
+			i = 1;
+		}
+		if (b[0].equals("NAO_COPIADO")) {
+			i = 2;
+		}
+		String apelidoOrigem = b[1];
+		String apelidoDestino = b[2];
+		int cRC = Integer.parseInt(b[3]);
+		String mens = b[4];
+
+		PacoteDados pacoteDados = new PacoteDados(pd, controleErro[i], apelidoOrigem, apelidoDestino, cRC, mens);
+
+		return pacoteDados;
 	}
 }

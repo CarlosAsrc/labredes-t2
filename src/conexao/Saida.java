@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import negocios.ControleString;
 import negocios.Estados;
+import negocios.Mensagens;
 import negocios.main;
 
 public class Saida {
@@ -19,10 +20,10 @@ public class Saida {
 
 	public static void enviar() throws SocketException, IOException, InterruptedException {
 
-		String mensagem = main.configuracao.getApelido();
-		
-			System.out.println("Enviando...");
-		
+		String mensagem = "Transmitindo";
+
+		System.out.println("Enviando...");
+
 		BufferedReader clientRead = new BufferedReader(new InputStreamReader(System.in));
 
 		InetAddress IP = InetAddress.getByName(main.configuracao.getIpDestino());
@@ -32,15 +33,33 @@ public class Saida {
 
 		while (true) {
 			tempo = tempo + 1;
-			if (tempo==2) {
+			if (tempo == 2) {
 				System.out.println("Transmitindo!");
 			}
-			//System.out.println("\nTempo: " + tempo);
-			Estados.tempoA=tempo;
+			// System.out.println("\nTempo: " + tempo);
+			Estados.tempoA = tempo;
 			byte[] sendbuffer = new byte[1024];
 			byte[] receivebuffer = new byte[1024];
 
+			// Prepara mensagem padrao
 			String clientData = mensagem;
+			// Se recebeu um pacote, envia ele para o proximo
+			if (!Estados.saidaPacote.equals("")) {
+				clientData = Estados.saidaPacote;
+				Estados.saidaPacote = "";
+			}
+			// Se nao recebeu pacote, esta com o token e nao enviou sua propria mensagem
+			// ainda, entao envia uma mensagem
+			else {
+				if (Estados.token) {
+					if (!Estados.esperandoRetorno) {
+						clientData = Mensagens.mensagens.get(0);
+						Mensagens.mensagens.remove(0);
+					}
+
+				}
+
+			}
 
 			sendbuffer = clientData.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, porta);
@@ -51,11 +70,11 @@ public class Saida {
 			String serverData = new String(receivePacket.getData());
 
 			serverData = ControleString.arrumaString(serverData);
-			System.out.print("\nRetorno: " + serverData);
+			// System.out.print("\nRetorno: " + serverData);
 
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
-			
+
 		}
-		
+
 	}
 }

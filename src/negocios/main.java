@@ -11,11 +11,18 @@ import objetos.Configuracao;
 import objetos.ControleErro;
 
 public class main {
+	
+	
+	
+	
 	public static String nome = "PC1";
 	public static String apelidoMaquinaDestino="";
 	public static boolean principal =false;
 	public static Configuracao configuracao =Testes.indentificacao(nome);
 	public static void main(String[] args) throws InterruptedException {
+
+		
+		
 		/*
 		String ipDestino="";
 		int porta=0;
@@ -31,6 +38,8 @@ public class main {
 	
 		if (nome.equals("PC1")) {
 			principal=true;
+			Mensagens.mensagens.add("2345;NAO_COPIADO:PC1:PC2:61965:arvore");
+			Mensagens.mensagens.add("2345;NAO_COPIADO:PC1:PC2:16176:bola");
 		}
 		
 	
