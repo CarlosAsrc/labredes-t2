@@ -21,7 +21,7 @@ public class Entrada {
 	public static int tempo = 0;
 	public static void escutar() throws InterruptedException, IOException {
 		
-		String mensagem = "PC1...";
+		String mensagem = main.configuracao.getApelido();
 	
 		System.out.println("Escutando...");
 		
@@ -46,7 +46,7 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata=ControleString.arrumaString(clientdata);
 		
-			//	System.out.println("\nClient : " + clientdata);
+				System.out.println("\nClient : " + clientdata);
 	
 
 			

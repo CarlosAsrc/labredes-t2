@@ -19,7 +19,7 @@ public class Saida {
 
 	public static void enviar() throws SocketException, IOException, InterruptedException {
 
-		String mensagem = "PC2...";
+		String mensagem = main.configuracao.getApelido();
 		
 			System.out.println("Enviando...");
 		
@@ -51,7 +51,7 @@ public class Saida {
 			String serverData = new String(receivePacket.getData());
 
 			serverData = ControleString.arrumaString(serverData);
-		//	System.out.print("\nServer: " + serverData);
+			System.out.print("\nServer: " + serverData);
 
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 			
