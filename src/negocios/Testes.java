@@ -28,8 +28,8 @@ public class Testes {
 		}
 		if (a.equals("PC3")) {
 			main.apelidoMaquinaDestino="PC1";
-			//String ipDestino = "192.168.4.103";
-			String ipDestino = "192.168.3.111";
+			String ipDestino = "192.168.4.103";
+			//String ipDestino = "192.168.3.111";
 			
 			int porta = 9876;
 			String apelido = "PC3";
