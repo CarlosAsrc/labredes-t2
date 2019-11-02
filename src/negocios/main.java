@@ -55,8 +55,9 @@ System.out.println("Houve retransmissao: false");
 }
 thread1();
 
-TimeUnit.SECONDS.sleep(15);
+if(principal=true) {
 thread2();
+}
 
 thread3();
 

@@ -58,7 +58,10 @@ public class Entrada {
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, portno);
 
 			serverSocket.send(sendPacket);
+if (main.principal==false&&tempo==1) {
 
+	main.thread2();	
+}
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 			
 		}
