@@ -51,7 +51,7 @@ public class Saida {
 			String serverData = new String(receivePacket.getData());
 
 			serverData = ControleString.arrumaString(serverData);
-			System.out.print("\nServer: " + serverData);
+			System.out.print("\nRetorno: " + serverData);
 
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 			

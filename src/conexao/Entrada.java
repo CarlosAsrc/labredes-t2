@@ -31,9 +31,10 @@ public class Entrada {
 		while (true) {
 			tempo = tempo + 1;
 			if (tempo==2) {
+				System.out.println();
 				System.out.println("Transmitindo!");
 			}
-			
+			System.out.println();
 			System.out.println("Tempo: " + tempo);
 			Estados.tempoA=tempo;
 			byte[] receivebuffer = new byte[1024];
@@ -46,7 +47,7 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata=ControleString.arrumaString(clientdata);
 		
-				System.out.println("\nClient : " + clientdata);
+				System.out.println("\nRecebi : " + clientdata);
 	
 
 			
