@@ -35,9 +35,9 @@ public class Mensagens {
 	}
 
 	public static PacoteDados converteString_PD(String mensagem) {
-		String[] a = mensagem.split(":");
+		String[] a = mensagem.split(";");
 		String pd = a[0];
-		String[] b = a[1].split(";");
+		String[] b = a[1].split(":");
 		ControleErro[] controleErro = ControleErro.values();
 		int i = 0;
 		if (b[0].equals("ACK")) {
