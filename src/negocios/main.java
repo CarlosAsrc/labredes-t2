@@ -6,8 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import conexao.Entrada;
 import conexao.Saida;
-import javafx.application.Platform;
-import javafx.scene.paint.Color;
+
 import objetos.Configuracao;
 import objetos.ControleErro;
 
