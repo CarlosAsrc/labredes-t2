@@ -6,7 +6,7 @@ public class Testes {
 	public static Configuracao indentificacao(String a) {
 		if (a.equals("PC1")) {
 			main.apelidoMaquinaDestino="PC2";
-			String ipDestino = "192.168.4.102";
+			String ipDestino = "192.168.4.100";
 			int porta = 9876;
 			String apelido = "PC1";
 			int tempoToken = 1;
