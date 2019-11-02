@@ -50,6 +50,7 @@ public class Entrada {
 			int portno = recvdpkt.getPort();
 			String clientdata = new String(recvdpkt.getData());
 			clientdata = ControleString.arrumaString(clientdata);
+			System.out.println("Mensagem recebida: " +clientdata);
 			// Recebeu uma mensagem
 			if (!clientdata.equals("Transmitindo")) {
 

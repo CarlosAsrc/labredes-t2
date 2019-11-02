@@ -48,35 +48,31 @@ public class Saida {
 				clientData = Estados.saidaPacote;
 				Estados.saidaPacote = "";
 			}
-			//Esta com o token e nao enviou sua propria mensagem
+			// Esta com o token e nao enviou sua propria mensagem
 			// ainda, entao envia uma mensagem
-			
-				if (Estados.token) {
-					if (!Estados.esperandoRetorno) {
-						if (Mensagens.mensagens.size()>0) {
-						clientData = Mensagens.mensagens.get(0);
-						Estados.esperandoRetorno=true;
-						}
-						else {
-							Estados.token=false;
-							clientData="1234";
-						}
-					}
 
+			if (Estados.token) {
+				if (!Estados.esperandoRetorno) {
+					if (Mensagens.mensagens.size() > 0) {
+						clientData = Mensagens.mensagens.get(0);
+						Estados.esperandoRetorno = true;
+					} else {
+						Estados.token = false;
+						clientData = "1234";
+					}
 				}
 
-			
+			}
 
 			sendbuffer = clientData.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, porta);
 			clientSocket.send(sendPacket);
-
+			System.out.println("Mensagem enviada: " + clientData);
 			DatagramPacket receivePacket = new DatagramPacket(receivebuffer, receivebuffer.length);
 			clientSocket.receive(receivePacket);
 			String serverData = new String(receivePacket.getData());
 
 			serverData = ControleString.arrumaString(serverData);
-			// System.out.print("\nRetorno: " + serverData);
 
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 
