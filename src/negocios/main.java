@@ -33,7 +33,7 @@ public class main {
 		if (nome.equals("PC1")) {
 			principal = true;
 			Mensagens.mensagens.add("2345;NAO_COPIADO:PC1:PC2:61965:arvore");
-			Mensagens.mensagens.add("2345;NAO_COPIADO:PC1:PC2:16176:bola");
+			Mensagens.mensagens.add("2345;NAO_COPIADO:PC1:PC3:16176:bola");
 		}
 
 		System.out.println("Comecou");
@@ -45,7 +45,7 @@ public class main {
 		} else {
 			System.out.println("Possui token: false ");
 		}
-		System.out.println("Possui pacote: false ");
+		
 
 		// PC principal apenas:
 		if (principal == true) {

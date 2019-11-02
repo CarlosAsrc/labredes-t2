@@ -106,6 +106,10 @@ public class Entrada {
 						}
 					}
 				}
+				else {
+					//Caso receba o token deve enviar a sua proxima mensagem
+					Estados.token = true;
+				}
 			}
 			String serverdata = mensagem;
 

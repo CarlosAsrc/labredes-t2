@@ -48,19 +48,24 @@ public class Saida {
 				clientData = Estados.saidaPacote;
 				Estados.saidaPacote = "";
 			}
-			// Se nao recebeu pacote, esta com o token e nao enviou sua propria mensagem
+			//Esta com o token e nao enviou sua propria mensagem
 			// ainda, entao envia uma mensagem
-			else {
+			
 				if (Estados.token) {
 					if (!Estados.esperandoRetorno) {
+						if (Mensagens.mensagens.size()>0) {
 						clientData = Mensagens.mensagens.get(0);
 						Estados.esperandoRetorno=true;
-						Estados.cRC=Mensagens.converteString_PD(clientData).getCRC();
+						}
+						else {
+							Estados.token=false;
+							clientData="1234";
+						}
 					}
 
 				}
 
-			}
+			
 
 			sendbuffer = clientData.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, porta);
