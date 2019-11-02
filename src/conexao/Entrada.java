@@ -86,6 +86,7 @@ public class Entrada {
 						ControleErro[] controleErro = ControleErro.values();
 						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]) {
 							Mensagens.mensagens.remove(0);
+							Estados.esperandoRetorno=false;
 							Estados.token = false;
 							Estados.saidaPacote = "1234";
 						}
