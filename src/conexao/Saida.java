@@ -54,7 +54,8 @@ public class Saida {
 				if (Estados.token) {
 					if (!Estados.esperandoRetorno) {
 						clientData = Mensagens.mensagens.get(0);
-						Mensagens.mensagens.remove(0);
+						Estados.esperandoRetorno=true;
+						Estados.cRC=Mensagens.converteString_PD(clientData).getCRC();
 					}
 
 				}

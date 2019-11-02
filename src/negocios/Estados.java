@@ -33,7 +33,10 @@ public static void atualizacao() throws InterruptedException {
 	
 		
 		System.out.println("Pacote: "+pacote);
+		
 		if (!pacote.equals("")) {
+			
+			
 		PacoteDados pacoteDados = Mensagens.converteString_PD(pacote);
 		if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())) {
 			Mensagens.mensagensrecebidas.add(pacoteDados.getMensagem());
@@ -62,4 +65,5 @@ public static String saidaPacote = "";
 public static int numeroTokens= 1;
 public static boolean retransmissao = false;
 public static boolean esperandoRetorno= false;
+public static int cRC;
 }
