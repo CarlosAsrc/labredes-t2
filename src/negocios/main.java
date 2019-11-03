@@ -40,6 +40,18 @@ public class main {
 			Mensagens.mensagens.add("2345;naocopiado:PC1:PC3:16176:bola");
 			Mensagens.mensagens.add("2345;naocopiado:PC1:TODOS:16840:casa");
 		}
+		if (nome.equals("PC2")) {
+			
+			Mensagens.mensagens.add("2345;naocopiado:PC2:PC3:27599:dado");
+			Mensagens.mensagens.add("2345;naocopiado:PC2:TODOS:8692:Elefante");
+			
+		}
+		if (nome.equals("PC3")) {
+			
+			Mensagens.mensagens.add("2345;naocopiado:PC3:PC1:65278:faca");
+			Mensagens.mensagens.add("2345;naocopiado:PC3:TODOS:2479:gota");
+			
+		}
 
 		System.out.println("Comecou");
 

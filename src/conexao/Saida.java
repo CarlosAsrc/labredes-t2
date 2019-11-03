@@ -51,7 +51,7 @@ public class Saida {
 			// ainda, entao envia uma mensagem
 
 			if (Estados.token) {
-				System.out.println("Esperando retorno: " +Estados.esperandoRetorno);
+				
 				if (!Estados.esperandoRetorno) {
 					if (Mensagens.mensagens.size() > 0) {
 						clientData = Mensagens.mensagens.get(0);
