@@ -30,7 +30,7 @@ public class Entrada {
 		DatagramSocket serverSocket = new DatagramSocket(main.configuracao.getPorta());
 
 		while (true) {
-			//Registro tempo de execucao
+			// Registro tempo de execucao
 			tempo = tempo + 1;
 			if (tempo == 2) {
 				System.out.println();
@@ -50,7 +50,7 @@ public class Entrada {
 			int portno = recvdpkt.getPort();
 			String clientdata = new String(recvdpkt.getData());
 			clientdata = ControleString.arrumaString(clientdata);
-			System.out.println("Mensagem recebida: " +clientdata);
+			System.out.println("Mensagem recebida: " + clientdata);
 			// Recebeu uma mensagem
 			if (!clientdata.equals("Transmitindo")) {
 
@@ -69,9 +69,9 @@ public class Entrada {
 							pacoteDados.setControleErro(controleErro[1]);
 							saida = Mensagens.convertePD_String(pacoteDados);
 						}
-						//Caso esteja correto
+						// Caso esteja correto
 						else {
-							//Confere se eh a maquina de destino
+							// Confere se eh a maquina de destino
 							if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())) {
 								ControleErro[] controleErro = ControleErro.values();
 								pacoteDados.setControleErro(controleErro[0]);
@@ -84,13 +84,14 @@ public class Entrada {
 					else {
 						// Se for ACK ou NAO_COPIADO remove a mensagem da lista e passa o token
 						ControleErro[] controleErro = ControleErro.values();
-						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]||Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[2]) {
+						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]
+								|| Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[2]) {
 							Mensagens.mensagens.remove(0);
-							Estados.esperandoRetorno=false;
+							Estados.esperandoRetorno = false;
 							Estados.token = false;
 							Estados.saidaPacote = "1234";
 						}
-						// Se for ERRO 
+						// Se for ERRO
 						else {
 							// Se a retranmissao for false , retransmite
 							if (!Estados.retransmissao) {
@@ -107,18 +108,19 @@ public class Entrada {
 
 						}
 					}
-				}
-				else {
-					//Caso receba o token deve enviar a sua proxima mensagem
+				} else {
+					// Caso receba o token deve enviar a sua proxima mensagem
 					Estados.token = true;
 				}
 			}
-			String serverdata = mensagem;
-
-			sendbuffer = serverdata.getBytes();
-			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, portno);
-
-			serverSocket.send(sendPacket);
+			/*
+			 * String serverdata = mensagem;
+			 * 
+			 * sendbuffer = serverdata.getBytes(); DatagramPacket sendPacket = new
+			 * DatagramPacket(sendbuffer, sendbuffer.length, IP, portno);
+			 * 
+			 * serverSocket.send(sendPacket);
+			 */
 			if (!(main.principal) && tempo == 1) {
 
 				main.thread2();
