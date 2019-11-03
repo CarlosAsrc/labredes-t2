@@ -14,8 +14,8 @@ public static void atualizacao() throws InterruptedException {
 	while (true) {
 		//Controle de conexao
 		if (tempoB==tempoA) {
-			System.out.println("CAIU");
-			System.exit(0);
+		//	System.out.println("CAIU");
+		//	System.exit(0);
 		}
 		if (tempoA>1) {
 		tempoB=tempoA;
