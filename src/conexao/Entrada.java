@@ -107,6 +107,7 @@ public class Entrada {
 							Estados.esperandoRetorno = false;
 							Estados.token = false;
 							Estados.saidaPacote = "1234";
+							Estados.retransmissao = false;
 						}
 						// Se for ERRO
 						else {
