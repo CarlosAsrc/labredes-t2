@@ -14,6 +14,8 @@ import objetos.ControleErro;
 public class main {
 
 	public static String nome = "PC1";
+	//Chance em % de erro em cada recebimento de mensagem
+	public static int chanceDeErro =10;
 	public static int tempoMaximoToken =80;
 	public static int tempoMinimoToken =40;
 	public static String apelidoMaquinaDestino = "";

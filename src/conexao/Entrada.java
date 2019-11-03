@@ -58,6 +58,8 @@ public class Entrada {
 				// Se nao for token
 				if (!Estados.pacote.equals("1234")) {
 					String saida = clientdata;
+					// Chance de ERRO!
+					
 					PacoteDados pacoteDados = Mensagens.converteString_PD(saida);		
 					//Se for a maquina de origem ou a maquina de destino ou TODOS
 					if(Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
