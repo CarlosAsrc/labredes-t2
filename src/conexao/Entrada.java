@@ -127,19 +127,10 @@ public class Entrada {
 
 						}
 					}
-				} else {
-					// Caso receba o token deve enviar a sua proxima mensagem
-					Estados.token = true;
-				}
+				} 
 			
-			/*
-			 * String serverdata = mensagem;
-			 * 
-			 * sendbuffer = serverdata.getBytes(); DatagramPacket sendPacket = new
-			 * DatagramPacket(sendbuffer, sendbuffer.length, IP, portno);
-			 * 
-			 * serverSocket.send(sendPacket);
-			 */
+			
+				//Para nao inciar os envios antes do ciclo comecar
 			if (!(main.principal) && tempo == 1) {
 
 				main.thread2();
