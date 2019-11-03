@@ -66,8 +66,11 @@ public class Saida {
 
 			sendbuffer = clientData.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, porta);
+			
+			if (!clientData.equals("Transmitindo")) {
 			clientSocket.send(sendPacket);
 			System.out.println("Mensagem enviada: " + clientData);
+			}
 			/*DatagramPacket receivePacket = new DatagramPacket(receivebuffer, receivebuffer.length);
 			clientSocket.receive(receivePacket);
 			String serverData = new String(receivePacket.getData());
