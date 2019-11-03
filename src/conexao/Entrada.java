@@ -49,6 +49,12 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata = ControleString.arrumaString(clientdata);
 			System.out.println("Mensagem recebida: " + clientdata);
+			// Chance de ERRO!
+			if (!clientdata.equals("1234")) {
+				
+				clientdata= Erro.causarErro(clientdata);
+				
+			}
 			
 			
 			// Recebeu uma mensagem
@@ -59,8 +65,7 @@ public class Entrada {
 				// Se nao for token
 				if (!Estados.pacote.equals("1234")) {
 					String saida = clientdata;
-					// Chance de ERRO!
-					saida= Erro.causarErro(saida);
+					
 					PacoteDados pacoteDados = Mensagens.converteString_PD(saida);		
 					//Se for a maquina de origem ou a maquina de destino ou TODOS
 					if(Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
