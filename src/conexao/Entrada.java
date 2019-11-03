@@ -97,7 +97,7 @@ public class Entrada {
 					}
 					// Eh a maquina de origem
 					else {
-						// Se for ACK ou NAO_COPIADO remove a mensagem da lista e passa o token
+						// Se for ACK ou naocopiado remove a mensagem da lista e passa o token
 						ControleErro[] controleErro = ControleErro.values();
 						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]
 								|| Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[2]) {
@@ -113,6 +113,7 @@ public class Entrada {
 							// Se a retranmissao for false , retransmite
 							if (!Estados.retransmissao) {
 								Estados.saidaPacote = Mensagens.mensagens.get(0);
+								Estados.esperandoRetorno = false;
 								Estados.retransmissao = true;
 							}
 							// Se for true, desisti da mensagem e passa o token
@@ -120,6 +121,7 @@ public class Entrada {
 								Mensagens.mensagens.remove(0);
 								System.out.println("Mensagem removida da fila!");
 								System.out.println("Fila atual: "+Mensagens.mensagens);
+								Estados.esperandoRetorno = false;
 								Estados.retransmissao = false;
 								Estados.token = false;
 								Estados.saidaPacote = "1234";
