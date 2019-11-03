@@ -11,6 +11,7 @@ import java.net.SocketException;
 import java.util.concurrent.TimeUnit;
 
 import negocios.ControleString;
+import negocios.Erro;
 import negocios.Estados;
 import negocios.Mensagens;
 import negocios.main;
@@ -33,9 +34,9 @@ public class Saida {
 
 		while (true) {
 			tempo = tempo + 1;
-		
+
 			// System.out.println("\nTempo: " + tempo);
-			
+
 			byte[] sendbuffer = new byte[1024];
 			byte[] receivebuffer = new byte[1024];
 
@@ -62,19 +63,22 @@ public class Saida {
 
 			}
 
+
+
 			sendbuffer = clientData.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, porta);
-			
-			if (!clientData.equals("Transmitindo")) {
-			clientSocket.send(sendPacket);
-			System.out.println("Mensagem enviada: " + clientData);
-			}
-			/*DatagramPacket receivePacket = new DatagramPacket(receivebuffer, receivebuffer.length);
-			clientSocket.receive(receivePacket);
-			String serverData = new String(receivePacket.getData());
 
-			
-*/
+			if (!clientData.equals("Transmitindo")) {
+				clientSocket.send(sendPacket);
+				System.out.println("Mensagem enviada: " + clientData);
+			}
+			/*
+			 * DatagramPacket receivePacket = new DatagramPacket(receivebuffer,
+			 * receivebuffer.length); clientSocket.receive(receivePacket); String serverData
+			 * = new String(receivePacket.getData());
+			 * 
+			 * 
+			 */
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 
 		}

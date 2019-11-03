@@ -23,7 +23,12 @@ public class main {
 	public static Configuracao configuracao = Testes.indentificacao(nome);
 
 	public static void main(String[] args) throws InterruptedException {
-
+		ControleErro[] controleErro = ControleErro.values();
+		ControleErro[] controleErro2 = ControleErro.values();
+		//Verifica sem a mensagem nao contem erros
+			if (controleErro2[1]==controleErro[1]) {
+			System.out.println("entrou");
+			}
 		/*
 		 * String ipDestino=""; int porta=0; String apelido=""; int tempoToken=0;
 		 * boolean token=true;

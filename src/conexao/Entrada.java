@@ -49,16 +49,17 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata = ControleString.arrumaString(clientdata);
 			System.out.println("Mensagem recebida: " + clientdata);
+			
 			// Chance de ERRO!
 			if (!clientdata.equals("1234")) {
-				
-				clientdata= Erro.causarErro(clientdata);
-				
+
+				clientdata = Erro.causarErro(clientdata);
+
 			}
 			
 			
 			// Recebeu uma mensagem
-			if (!clientdata.equals("Transmitindo")) {
+			
 
 				Estados.pacote = clientdata;
 				Estados.alteracao = "sim";
@@ -130,7 +131,7 @@ public class Entrada {
 					// Caso receba o token deve enviar a sua proxima mensagem
 					Estados.token = true;
 				}
-			}
+			
 			/*
 			 * String serverdata = mensagem;
 			 * 

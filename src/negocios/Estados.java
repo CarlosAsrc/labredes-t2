@@ -30,6 +30,11 @@ public static void atualizacao() throws InterruptedException {
 			
 			
 		PacoteDados pacoteDados = Mensagens.converteString_PD(pacote);
+		//Se o CRC16 estiver errado coloca erro na mensagem
+		if (pacoteDados.getCRC()!=CRC16.converter(pacoteDados.getMensagem())) {
+			ControleErro[] controleErro = ControleErro.values();
+			pacoteDados.setControleErro(controleErro[1]);
+		}
 		//Se o pacote for para o Destino ou para TODOS, adiciona na lista de pacotes recebidos
 		if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())||pacoteDados.getApelidoDestino().equals("TODOS")) {
 			if (!pacoteDados.getApelidoOrigem().equals(main.configuracao.getApelido())) {
@@ -49,10 +54,8 @@ public static void atualizacao() throws InterruptedException {
 		if (main.principal) {
 		System.out.println("Tokens circulando na rede: "+numeroTokens);
 
-		System.out.println("Houve retransmissao: "+retransmissao);
-
 		}
-		
+		System.out.println("Houve retransmissao: "+retransmissao);
 		alteracao="nao";
 	}
 	TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
