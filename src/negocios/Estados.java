@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import conexao.Entrada;
 import conexao.Saida;
+import objetos.ControleErro;
 import objetos.PacoteDados;
 
 public class Estados {
@@ -32,8 +33,12 @@ public static void atualizacao() throws InterruptedException {
 		//Se o pacote for para o Destino ou para TODOS, adiciona na lista de pacotes recebidos
 		if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())||pacoteDados.getApelidoDestino().equals("TODOS")) {
 			if (!pacoteDados.getApelidoOrigem().equals(main.configuracao.getApelido())) {
+				ControleErro[] controleErro = ControleErro.values();
+			//Verifica sem a mensagem nao contem erros
+				if (pacoteDados.getControleErro()!=controleErro[1]) {
 			Mensagens.mensagensrecebidas.add(pacoteDados.getMensagem());
 			System.out.println("Meus pacotes recebidos: "+Mensagens.mensagensrecebidas);
+				}
 			}
 		}
 		

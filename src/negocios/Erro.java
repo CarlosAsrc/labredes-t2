@@ -10,7 +10,7 @@ public static String causarErro(String mensagem) {
 	
 	if (resultado<=main.chanceDeErro) {
 		mensagem=mensagem+" Erro!";
-		System.out.println("Deu erro");
+		System.out.println("deu erro");
 	}
 	
 	return mensagem;
