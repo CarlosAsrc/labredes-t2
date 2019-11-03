@@ -48,8 +48,7 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata = ControleString.arrumaString(clientdata);
 			System.out.println("Mensagem recebida: " + clientdata);
-			String saida = clientdata;
-			PacoteDados pacoteDados = Mensagens.converteString_PD(saida);
+			
 			
 			// Recebeu uma mensagem
 			if (!clientdata.equals("Transmitindo")) {
@@ -58,7 +57,8 @@ public class Entrada {
 				Estados.alteracao = "sim";
 				// Se nao for token
 				if (!Estados.pacote.equals("1234")) {
-					
+					String saida = clientdata;
+					PacoteDados pacoteDados = Mensagens.converteString_PD(saida);		
 					//Se for a maquina de origem ou a maquina de destino
 					if(Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
 							.equals(main.configuracao.getApelido())||Mensagens.converteString_PD(Estados.pacote).getApelidoDestino()
