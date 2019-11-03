@@ -11,13 +11,12 @@ public class LeitorPacote {
         scanner.useDelimiter(";");
         scanner.next();
         scanner.useDelimiter(":");
-        String controleErro = scanner.next();
+        String controleErro = scanner.next().replace(";", "");
         String apelidoOrigem = scanner.next();
         String apelidoDestino = scanner.next();
         int CRC = Integer.parseInt(scanner.next());
         String mensagem = scanner.next();
 
-        //FALTA ALTERAR controle de erro:
-        return new PacoteDados("2345",ControleErro.naocopiado, apelidoOrigem, apelidoDestino, CRC, mensagem);
+        return new PacoteDados("2345",ControleErro.valueOf(controleErro), apelidoOrigem, apelidoDestino, CRC, mensagem);
     }
 }
