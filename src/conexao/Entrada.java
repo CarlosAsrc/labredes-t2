@@ -48,6 +48,9 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata = ControleString.arrumaString(clientdata);
 			System.out.println("Mensagem recebida: " + clientdata);
+			String saida = clientdata;
+			PacoteDados pacoteDados = Mensagens.converteString_PD(saida);
+			
 			// Recebeu uma mensagem
 			if (!clientdata.equals("Transmitindo")) {
 
@@ -55,26 +58,32 @@ public class Entrada {
 				Estados.alteracao = "sim";
 				// Se nao for token
 				if (!Estados.pacote.equals("1234")) {
+					
+					//Se for a maquina de origem ou a maquina de destino
+					if(Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
+							.equals(main.configuracao.getApelido())||Mensagens.converteString_PD(Estados.pacote).getApelidoDestino()
+							.equals(main.configuracao.getApelido())) {
+					
+					// Confere se o CRC16 esta correto
+					if (!(CRC16.converter(pacoteDados.getMensagem()) == pacoteDados.getCRC())) {
+						ControleErro[] controleErro = ControleErro.values();
+						pacoteDados.setControleErro(controleErro[1]);
+						saida = Mensagens.convertePD_String(pacoteDados);
+					}
+					// Caso esteja correto
+					else {
+						// Confere se eh a maquina de destino
+						if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())) {
+							ControleErro[] controleErro = ControleErro.values();
+							pacoteDados.setControleErro(controleErro[0]);
+							saida = Mensagens.convertePD_String(pacoteDados);
+						}
+					}
+					}
 					// Se nao for a maquina de origem, envia o pacote para proxima
 					if (!Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
 							.equals(main.configuracao.getApelido())) {
-						String saida = clientdata;
-						PacoteDados pacoteDados = Mensagens.converteString_PD(saida);
-						// Confere se o CRC16 esta correto
-						if (!(CRC16.converter(pacoteDados.getMensagem()) == pacoteDados.getCRC())) {
-							ControleErro[] controleErro = ControleErro.values();
-							pacoteDados.setControleErro(controleErro[1]);
-							saida = Mensagens.convertePD_String(pacoteDados);
-						}
-						// Caso esteja correto
-						else {
-							// Confere se eh a maquina de destino
-							if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())) {
-								ControleErro[] controleErro = ControleErro.values();
-								pacoteDados.setControleErro(controleErro[0]);
-								saida = Mensagens.convertePD_String(pacoteDados);
-							}
-						}
+						
 						Estados.saidaPacote = saida;
 					}
 					// Eh a maquina de origem
