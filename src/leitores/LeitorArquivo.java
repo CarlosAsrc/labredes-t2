@@ -30,7 +30,7 @@ public class LeitorArquivo {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e){
-            System.out.println("Arquivo de configuração com formato inválido.");
+            System.out.println("Arquivo de configuracao com formato invalido.");
         }
         return null;
     }

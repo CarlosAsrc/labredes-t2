@@ -33,11 +33,9 @@ public class Saida {
 
 		while (true) {
 			tempo = tempo + 1;
-			if (tempo == 2) {
-				System.out.println("Transmitindo!");
-			}
+		
 			// System.out.println("\nTempo: " + tempo);
-			Estados.tempoA = tempo;
+			
 			byte[] sendbuffer = new byte[1024];
 			byte[] receivebuffer = new byte[1024];
 

@@ -32,14 +32,11 @@ public class Entrada {
 		while (true) {
 			// Registro tempo de execucao
 			tempo = tempo + 1;
-			if (tempo == 2) {
-				System.out.println();
-				System.out.println("Transmitindo!");
-			}
+			
 			System.out.println();
 			System.out.println("Tempo: " + tempo);
 
-			Estados.tempoA = tempo;
+			
 
 			byte[] receivebuffer = new byte[1024];
 			byte[] sendbuffer = new byte[1024];
@@ -87,6 +84,8 @@ public class Entrada {
 						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]
 								|| Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[2]) {
 							Mensagens.mensagens.remove(0);
+						System.out.println("Mensagem removida da fila!");
+						System.out.println("Fila atual: "+Mensagens.mensagens);
 							Estados.esperandoRetorno = false;
 							Estados.token = false;
 							Estados.saidaPacote = "1234";
@@ -101,6 +100,8 @@ public class Entrada {
 							// Se for true, desisti da mensagem e passa o token
 							else {
 								Mensagens.mensagens.remove(0);
+								System.out.println("Mensagem removida da fila!");
+								System.out.println("Fila atual: "+Mensagens.mensagens);
 								Estados.retransmissao = false;
 								Estados.token = false;
 								Estados.saidaPacote = "1234";

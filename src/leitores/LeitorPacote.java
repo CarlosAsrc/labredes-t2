@@ -18,6 +18,6 @@ public class LeitorPacote {
         String mensagem = scanner.next();
 
         //FALTA ALTERAR controle de erro:
-        return new PacoteDados("2345",ControleErro.NAO_COPIADO, apelidoOrigem, apelidoDestino, CRC, mensagem);
+        return new PacoteDados("2345",ControleErro.naocopiado, apelidoOrigem, apelidoDestino, CRC, mensagem);
     }
 }

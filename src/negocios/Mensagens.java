@@ -12,13 +12,17 @@ public class Mensagens {
 
 	public static void criaNovaMensagem() {
 		System.out.println("Digite sua mensagem: ");
-
 		Scanner s = new Scanner(System.in);
 		String texto = s.nextLine();
+		
+		System.out.println("Digite o apelido do destinatario: ");
+		Scanner s2 = new Scanner(System.in);
+		String destino = s2.nextLine();
+		
 		String pd = "2345";
 		ControleErro[] controleErro = ControleErro.values();
 		String apelidoOrigem = main.configuracao.getApelido();
-		String apelidoDestino = main.apelidoMaquinaDestino;
+		String apelidoDestino = destino;
 		int CRC = CRC16.converter(texto);
 		PacoteDados pacoteDado = new PacoteDados(pd, controleErro[2], apelidoOrigem, apelidoDestino, CRC, texto);
 		String mensagem = convertePD_String(pacoteDado);
@@ -43,10 +47,10 @@ public class Mensagens {
 		if (b[0].equals("ACK")) {
 			i = 0;
 		}
-		if (b[0].equals("ERRO")) {
+		if (b[0].equals("erro")) {
 			i = 1;
 		}
-		if (b[0].equals("NAO_COPIADO")) {
+		if (b[0].equals("naocopiado")) {
 			i = 2;
 		}
 		String apelidoOrigem = b[1];
