@@ -14,6 +14,8 @@ import objetos.ControleErro;
 public class main {
 
 	public static String nome = "PC1";
+	public static int tempoMaximoToken =80;
+	public static int tempoMinimoToken =40;
 	public static String apelidoMaquinaDestino = "";
 	public static boolean principal = false;
 	public static Configuracao configuracao = Testes.indentificacao(nome);

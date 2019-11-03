@@ -11,7 +11,7 @@ public class Testes {
 			String apelido = "PC1";
 			int tempoToken = 4;
 			boolean token = true;
-
+			
 			Configuracao configuracao = new Configuracao(ipDestino, porta, apelido, tempoToken, token);
 			return configuracao;
 		}

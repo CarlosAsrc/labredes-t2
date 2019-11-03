@@ -32,7 +32,7 @@ public static void atualizacao() throws InterruptedException {
 		System.out.println("Possui token: "+token);
 	
 		
-		System.out.println("Pacote: "+pacote);
+	//	System.out.println("Pacote: "+pacote);
 		
 		if (!pacote.equals("")) {
 			
