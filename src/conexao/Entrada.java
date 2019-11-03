@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import negocios.CRC16;
 import negocios.ControleString;
+import negocios.Erro;
 import negocios.Estados;
 import negocios.Mensagens;
 import negocios.main;
@@ -59,7 +60,7 @@ public class Entrada {
 				if (!Estados.pacote.equals("1234")) {
 					String saida = clientdata;
 					// Chance de ERRO!
-					
+					saida= Erro.causarErro(saida);
 					PacoteDados pacoteDados = Mensagens.converteString_PD(saida);		
 					//Se for a maquina de origem ou a maquina de destino ou TODOS
 					if(Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
