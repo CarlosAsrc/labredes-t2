@@ -26,9 +26,13 @@ public class Mensagens {
 		int CRC = CRC16.converter(texto);
 		PacoteDados pacoteDado = new PacoteDados(pd, controleErro[2], apelidoOrigem, apelidoDestino, CRC, texto);
 		String mensagem = convertePD_String(pacoteDado);
+		if (mensagens.size()>=10) {
+			System.out.println("Sua mensagem nao pode ser adicionada pois a lista esta cheia");
+		}
+		else {
 		mensagens.add(mensagem);
 		System.out.println("Sua mensagem foi adicionada a lista");
-
+		}
 	}
 
 	public static String convertePD_String(PacoteDados pad) {

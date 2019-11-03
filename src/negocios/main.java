@@ -34,8 +34,9 @@ public class main {
 
 		if (nome.equals("PC1")) {
 			principal = true;
-			Mensagens.mensagens.add("2345;NAO_COPIADO:PC1:PC2:61965:arvore");
-			Mensagens.mensagens.add("2345;NAO_COPIADO:PC1:PC3:16176:bola");
+			Mensagens.mensagens.add("2345;naocopiado:PC1:PC2:61965:arvore");
+			Mensagens.mensagens.add("2345;naocopiado:PC1:PC3:16176:bola");
+			Mensagens.mensagens.add("2345;naocopiado:PC1:TODOS:16840:casa");
 		}
 
 		System.out.println("Comecou");

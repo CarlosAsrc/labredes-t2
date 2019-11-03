@@ -29,7 +29,8 @@ public static void atualizacao() throws InterruptedException {
 			
 			
 		PacoteDados pacoteDados = Mensagens.converteString_PD(pacote);
-		if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())) {
+		//Se o pacote for para o Destino ou para TODOS, adiciona na lista de pacotes recebidos
+		if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())||pacoteDados.getApelidoDestino().equals("TODOS")) {
 			Mensagens.mensagensrecebidas.add(pacoteDados.getMensagem());
 			System.out.println("Meus pacotes recebidos: "+Mensagens.mensagensrecebidas);
 		}
