@@ -82,15 +82,15 @@ public class Entrada {
 					}
 					// Eh a maquina de origem
 					else {
-						// Se for ACK remove a mensagem da lista e passa o token
+						// Se for ACK ou NAO_COPIADO remove a mensagem da lista e passa o token
 						ControleErro[] controleErro = ControleErro.values();
-						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]) {
+						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]||Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[2]) {
 							Mensagens.mensagens.remove(0);
 							Estados.esperandoRetorno=false;
 							Estados.token = false;
 							Estados.saidaPacote = "1234";
 						}
-						// Se for ERRO ou NAO_COPIADO
+						// Se for ERRO 
 						else {
 							// Se a retranmissao for false , retransmite
 							if (!Estados.retransmissao) {

@@ -56,7 +56,7 @@ public static void atualizacao() throws InterruptedException {
 		
 		alteracao="nao";
 	}
-	TimeUnit.SECONDS.sleep(1);
+	TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 	}
 }
 public static boolean token = false;
