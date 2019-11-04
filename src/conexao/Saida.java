@@ -33,6 +33,7 @@ public class Saida {
 
 		int porta = main.configuracao.getPorta();
 		DatagramSocket clientSocket = new DatagramSocket();
+		DatagramSocket clientSocket2 = new DatagramSocket();
 
 		while (true) {
 			tempo = tempo + 1;
@@ -79,7 +80,7 @@ public class Saida {
 							byte[] sendbuffer2 = new byte[1024];
 							sendbuffer2 = a.getBytes();
 							DatagramPacket sendPacket2 = new DatagramPacket(sendbuffer2, sendbuffer2.length, IP, porta);
-							clientSocket.send(sendPacket2);
+							clientSocket2.send(sendPacket2);
 							Tempos.iniciaTempo();
 						}
 			
