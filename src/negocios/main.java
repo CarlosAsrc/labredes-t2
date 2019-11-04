@@ -17,7 +17,7 @@ public class main {
 	//Chance em % de erro em cada recebimento de mensagem
 	public static int chanceDeErro =20;
 	public static int tempoMaximoToken =16;
-	public static int tempoMinimoToken =14;
+	public static int tempoMinimoToken =5;
 	public static String apelidoMaquinaDestino = "";
 	public static boolean principal = false;
 	public static Configuracao configuracao = Testes.indentificacao(nome);
