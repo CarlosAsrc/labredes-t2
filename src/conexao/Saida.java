@@ -27,22 +27,21 @@ public class Saida {
 
 		System.out.println("Enviando...");
 
-		BufferedReader clientRead = new BufferedReader(new InputStreamReader(System.in));
+		
 
 		InetAddress IP = InetAddress.getByName(main.configuracao.getIpDestino());
 
 		int porta = main.configuracao.getPorta();
 		DatagramSocket clientSocket = new DatagramSocket();
 		DatagramSocket clientSocket2 = new DatagramSocket();
-
+		
 		while (true) {
 			tempo = tempo + 1;
 
 			// System.out.println("\nTempo: " + tempo);
 
 			byte[] sendbuffer = new byte[1024];
-			byte[] receivebuffer = new byte[1024];
-
+		
 			// Prepara mensagem padrao
 			String clientData = mensagem;
 			// Se recebeu um pacote, envia ele para o proximo
@@ -77,8 +76,12 @@ public class Saida {
 						if (Estados.esperandoToken && main.tempoMaximoToken<(int) Tempos.calculatempo()) {
 							System.out.println("Time out, mais um token foi criado!");
 							String a ="1234";
-							
-						//	Tempos.iniciaTempo();
+							byte[] sendbuffer2 = new byte[1024];
+							sendbuffer2 = a.getBytes();
+							DatagramPacket sendPacket2 = new DatagramPacket(sendbuffer2, sendbuffer2.length, IP, porta);
+							clientSocket2.send(sendPacket2);
+							System.out.println("blabla");
+							Tempos.iniciaTempo();
 						}
 			
 			if (!clientData.equals("Transmitindo")) {
