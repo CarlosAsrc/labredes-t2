@@ -71,7 +71,7 @@ public class Saida {
 			sendbuffer = clientData.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, porta);
 
-			System.out.println("antes clientdata: "+clientData);
+			
 			// Tempo de espera maior que o tempo maximo cria um novo token
 						if (Estados.esperandoToken && main.tempoMaximoToken<(int) Tempos.calculatempo()) {
 							System.out.println("Time out, mais um token foi criado!");
@@ -83,7 +83,7 @@ public class Saida {
 							System.out.println("Mensagem enviada: " + a);
 							Tempos.iniciaTempo();
 						}
-			System.out.println("depois clientdata: "+clientData);
+			
 			if (!clientData.equals("Transmitindo")) {
 				if (clientData.equals("1234")&&!(Estados.esperandoToken)) {
 					Tempos.iniciaTempo();
@@ -91,7 +91,7 @@ public class Saida {
 					Estados.esperandoToken=true;
 				}
 				
-				System.out.println("teste 2");
+				
 				clientSocket.send(sendPacket);
 				System.out.println("Mensagem enviada: " + clientData);
 			}
