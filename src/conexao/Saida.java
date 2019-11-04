@@ -77,11 +77,8 @@ public class Saida {
 						if (Estados.esperandoToken && main.tempoMaximoToken<(int) Tempos.calculatempo()) {
 							System.out.println("Time out, mais um token foi criado!");
 							String a ="1234";
-							byte[] sendbuffer2 = new byte[1024];
-							sendbuffer2 = a.getBytes();
-							DatagramPacket sendPacket2 = new DatagramPacket(sendbuffer2, sendbuffer2.length, IP, porta);
-							clientSocket2.send(sendPacket2);
-							Tempos.iniciaTempo();
+							
+						//	Tempos.iniciaTempo();
 						}
 			
 			if (!clientData.equals("Transmitindo")) {
