@@ -6,7 +6,7 @@ public class Testes {
 	public static Configuracao indentificacao(String a) {
 		if (a.equals("PC1")) {
 			main.apelidoMaquinaDestino = "PC2";
-			String ipDestino = "10.32.161.139";
+			String ipDestino = "10.32.160.89";
 			int porta = 9876;
 			String apelido = "PC1";
 			int tempoToken = 3;
@@ -17,7 +17,7 @@ public class Testes {
 		}
 		if (a.equals("PC2")) {
 			main.apelidoMaquinaDestino = "PC3";
-			String ipDestino = "10.32.160.134";
+			String ipDestino = "10.32.162.61";
 			int porta = 9876;
 			String apelido = "PC2";
 			int tempoToken = 3;
@@ -28,7 +28,7 @@ public class Testes {
 		}
 		if (a.equals("PC3")) {
 			main.apelidoMaquinaDestino = "PC1";
-			String ipDestino = "10.32.161.110";
+			String ipDestino = "10.32.160.96";
 			int porta = 9876;
 			String apelido = "PC3";
 			int tempoToken = 3;
