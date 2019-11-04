@@ -9,7 +9,7 @@ public class Testes {
 			String ipDestino = "10.32.160.89";
 			int porta = 9876;
 			String apelido = "PC1";
-			int tempoToken = 1;
+			int tempoToken = 3;
 			boolean token = true;
 
 			Configuracao configuracao = new Configuracao(ipDestino, porta, apelido, tempoToken, token);
@@ -20,7 +20,7 @@ public class Testes {
 			String ipDestino = "10.32.160.96";
 			int porta = 9876;
 			String apelido = "PC2";
-			int tempoToken = 1;
+			int tempoToken = 3;
 			boolean token = true;
 
 			Configuracao configuracao = new Configuracao(ipDestino, porta, apelido, tempoToken, token);
@@ -31,7 +31,7 @@ public class Testes {
 			String ipDestino = "10.32.160.161";
 			int porta = 9876;
 			String apelido = "PC3";
-			int tempoToken = 1;
+			int tempoToken = 3;
 			boolean token = true;
 
 			Configuracao configuracao = new Configuracao(ipDestino, porta, apelido, tempoToken, token);
