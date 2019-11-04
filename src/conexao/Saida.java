@@ -80,7 +80,7 @@ public class Saida {
 							sendbuffer2 = a.getBytes();
 							DatagramPacket sendPacket2 = new DatagramPacket(sendbuffer2, sendbuffer2.length, IP, porta);
 							clientSocket2.send(sendPacket2);
-							System.out.println("blabla");
+							System.out.println("Mensagem enviada: " + a);
 							Tempos.iniciaTempo();
 						}
 			
