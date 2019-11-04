@@ -73,7 +73,7 @@ public class Saida {
 
 			
 			// Tempo de espera maior que o tempo maximo cria um novo token
-						if (Estados.esperandoToken && main.tempoMaximoToken>(int) Tempos.calculatempo()) {
+						if (Estados.esperandoToken && main.tempoMaximoToken<(int) Tempos.calculatempo()) {
 							System.out.println("Time out, mais um token foi criado!");
 							String a ="1234";
 							byte[] sendbuffer2 = new byte[1024];
