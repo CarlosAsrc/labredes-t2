@@ -24,6 +24,8 @@ public class main {
 
 	public static void main(String[] args) throws InterruptedException {
 		
+		
+		
 		/*
 		 * String ipDestino=""; int porta=0; String apelido=""; int tempoToken=0;
 		 * boolean token=true;

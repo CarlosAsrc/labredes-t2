@@ -50,11 +50,7 @@ public static void atualizacao() throws InterruptedException {
 		}
 		
 
-		//PC principal apenas:
-		if (main.principal) {
-		System.out.println("Tokens circulando na rede: "+numeroTokens);
 
-		}
 		System.out.println("Houve retransmissao: "+retransmissao);
 		alteracao="nao";
 	}
@@ -64,8 +60,9 @@ public static void atualizacao() throws InterruptedException {
 public static boolean token = false;
 public static String pacote = "";
 public static String saidaPacote = "";
-public static int numeroTokens= 1;
+
 public static boolean retransmissao = false;
 public static boolean esperandoRetorno= false;
+public static boolean esperandoToken= false;
 
 }

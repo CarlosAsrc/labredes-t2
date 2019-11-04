@@ -15,6 +15,7 @@ import negocios.ControleString;
 import negocios.Erro;
 import negocios.Estados;
 import negocios.Mensagens;
+import negocios.Tempos;
 import negocios.main;
 import objetos.ControleErro;
 import objetos.PacoteDados;
@@ -33,11 +34,9 @@ public class Entrada {
 		while (true) {
 			// Registro tempo de execucao
 			tempo = tempo + 1;
-			
+
 			System.out.println();
 			System.out.println("Tempo: " + tempo);
-
-			
 
 			byte[] receivebuffer = new byte[1024];
 			byte[] sendbuffer = new byte[1024];
@@ -49,50 +48,62 @@ public class Entrada {
 			String clientdata = new String(recvdpkt.getData());
 			clientdata = ControleString.arrumaString(clientdata);
 			System.out.println("Mensagem recebida: " + clientdata);
-			
-			// Chance de ERRO!
-			if (!clientdata.equals("1234")) {
-
-				clientdata = Erro.causarErro(clientdata);
-
+			// Tempo de chegada menor que o minimo
+			if (Estados.esperandoToken && clientdata.equals("1234")) {
+				int i = (int) Tempos.calculatempo();
+				if (i < main.tempoMinimoToken) {
+					System.out.println("Mais de um token na rede. Token eliminado!");
+					clientdata = "segundo token";
+				}
 			}
-			
-			
-			// Recebeu uma mensagem
-			
+			if (clientdata.equals("1234")) {
+				Estados.esperandoToken=false;
+			}
+
+			if (!clientdata.equals("segundo token")) {
+				// Chance de ERRO!
+				if (!clientdata.equals("1234")) {
+
+					clientdata = Erro.causarErro(clientdata);
+
+				}
+
+				// Recebeu uma mensagem
 
 				Estados.pacote = clientdata;
 				Estados.alteracao = "sim";
 				// Se nao for token
 				if (!Estados.pacote.equals("1234")) {
 					String saida = clientdata;
-					
-					PacoteDados pacoteDados = Mensagens.converteString_PD(saida);		
-					//Se for a maquina de origem ou a maquina de destino ou TODOS
-					if(Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
-							.equals(main.configuracao.getApelido())||Mensagens.converteString_PD(Estados.pacote).getApelidoDestino()
-							.equals(main.configuracao.getApelido())||Mensagens.converteString_PD(Estados.pacote).getApelidoDestino().equals("TODOS")) {
-					
-					// Confere se o CRC16 esta correto
-					if (!(CRC16.converter(pacoteDados.getMensagem()) == pacoteDados.getCRC())) {
-						ControleErro[] controleErro = ControleErro.values();
-						pacoteDados.setControleErro(controleErro[1]);
-						saida = Mensagens.convertePD_String(pacoteDados);
-					}
-					// Caso esteja correto
-					else {
-						// Confere se eh a maquina de destino
-						if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())) {
+
+					PacoteDados pacoteDados = Mensagens.converteString_PD(saida);
+					// Se for a maquina de origem ou a maquina de destino ou TODOS
+					if (Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
+							.equals(main.configuracao.getApelido())
+							|| Mensagens.converteString_PD(Estados.pacote).getApelidoDestino()
+									.equals(main.configuracao.getApelido())
+							|| Mensagens.converteString_PD(Estados.pacote).getApelidoDestino().equals("TODOS")) {
+
+						// Confere se o CRC16 esta correto
+						if (!(CRC16.converter(pacoteDados.getMensagem()) == pacoteDados.getCRC())) {
 							ControleErro[] controleErro = ControleErro.values();
-							pacoteDados.setControleErro(controleErro[0]);
+							pacoteDados.setControleErro(controleErro[1]);
 							saida = Mensagens.convertePD_String(pacoteDados);
 						}
-					}
+						// Caso esteja correto
+						else {
+							// Confere se eh a maquina de destino
+							if (pacoteDados.getApelidoDestino().equals(main.configuracao.getApelido())) {
+								ControleErro[] controleErro = ControleErro.values();
+								pacoteDados.setControleErro(controleErro[0]);
+								saida = Mensagens.convertePD_String(pacoteDados);
+							}
+						}
 					}
 					// Se nao for a maquina de origem, envia o pacote para proxima
 					if (!Mensagens.converteString_PD(Estados.pacote).getApelidoOrigem()
 							.equals(main.configuracao.getApelido())) {
-						
+
 						Estados.saidaPacote = saida;
 					}
 					// Eh a maquina de origem
@@ -102,8 +113,8 @@ public class Entrada {
 						if (Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[0]
 								|| Mensagens.converteString_PD(Estados.pacote).getControleErro() == controleErro[2]) {
 							Mensagens.mensagens.remove(0);
-						System.out.println("Mensagem removida da fila!");
-						System.out.println("Fila atual: "+Mensagens.mensagens);
+							System.out.println("Mensagem removida da fila!");
+							System.out.println("Fila atual: " + Mensagens.mensagens);
 							Estados.esperandoRetorno = false;
 							Estados.token = false;
 							Estados.saidaPacote = "1234";
@@ -121,7 +132,7 @@ public class Entrada {
 							else {
 								Mensagens.mensagens.remove(0);
 								System.out.println("Mensagem removida da fila!");
-								System.out.println("Fila atual: "+Mensagens.mensagens);
+								System.out.println("Fila atual: " + Mensagens.mensagens);
 								Estados.esperandoRetorno = false;
 								Estados.retransmissao = false;
 								Estados.token = false;
@@ -130,13 +141,13 @@ public class Entrada {
 
 						}
 					}
-				} 
-			
-			
-				//Para nao inciar os envios antes do ciclo comecar
-			if (!(main.principal) && tempo == 1) {
+				}
 
-				main.thread2();
+				// Para nao inciar os envios antes do ciclo comecar
+				if (!(main.principal) && tempo == 1) {
+
+					main.thread2();
+				}
 			}
 			TimeUnit.SECONDS.sleep(main.configuracao.getTempoToken());
 

@@ -14,6 +14,8 @@ import negocios.ControleString;
 import negocios.Erro;
 import negocios.Estados;
 import negocios.Mensagens;
+
+import negocios.Tempos;
 import negocios.main;
 
 public class Saida {
@@ -69,7 +71,26 @@ public class Saida {
 			sendbuffer = clientData.getBytes();
 			DatagramPacket sendPacket = new DatagramPacket(sendbuffer, sendbuffer.length, IP, porta);
 
+			
+			// Tempo de espera maior que o tempo maximo cria um novo token
+						if (Estados.esperandoToken && main.tempoMaximoToken>(int) Tempos.calculatempo()) {
+							System.out.println("Time out, mais um token foi criado!");
+							String a ="1234";
+							byte[] sendbuffer2 = new byte[1024];
+							sendbuffer2 = a.getBytes();
+							DatagramPacket sendPacket2 = new DatagramPacket(sendbuffer2, sendbuffer2.length, IP, porta);
+							clientSocket.send(sendPacket2);
+							Tempos.iniciaTempo();
+						}
+			
 			if (!clientData.equals("Transmitindo")) {
+				if (clientData.equals("1234")&&!(Estados.esperandoToken)) {
+					Tempos.iniciaTempo();
+					
+					Estados.esperandoToken=true;
+				}
+				
+				
 				clientSocket.send(sendPacket);
 				System.out.println("Mensagem enviada: " + clientData);
 			}
