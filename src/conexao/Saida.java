@@ -83,7 +83,7 @@ public class Saida {
 							System.out.println("Mensagem enviada: " + a);
 							Tempos.iniciaTempo();
 						}
-			
+			System.out.println("teste 1");
 			if (!clientData.equals("Transmitindo")) {
 				if (clientData.equals("1234")&&!(Estados.esperandoToken)) {
 					Tempos.iniciaTempo();
@@ -91,7 +91,7 @@ public class Saida {
 					Estados.esperandoToken=true;
 				}
 				
-				
+				System.out.println("teste 2");
 				clientSocket.send(sendPacket);
 				System.out.println("Mensagem enviada: " + clientData);
 			}
