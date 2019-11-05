@@ -49,7 +49,7 @@ public class Entrada {
 			clientdata = ControleString.arrumaString(clientdata);
 			System.out.println("Mensagem recebida: " + clientdata);
 			// Tempo de chegada menor que o minimo
-			if (clientdata.equals("1234")) {
+			if (clientdata.equals("1234")&&Estados.esperandoToken) {
 				int i = (int) Tempos.calculatempo();
 				if (i < main.tempoMinimoToken) {
 					System.out.println("Mais de um token na rede. Token eliminado!");
